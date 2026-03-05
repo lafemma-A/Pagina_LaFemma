@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from 'react';
-import { useParams } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
+import { useParams, notFound } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, ChevronLeft, Ruler, Droplets, MapPin, Sparkles } from 'lucide-react';
 import Link from 'next/link';
@@ -8,18 +8,63 @@ import Link from 'next/link';
 import FluidBackground from '@/components/shaders/FluidBackground';
 import FadeImage from '@/components/ui/FadeImage';
 import Footer from '@/components/shared/Footer';
-import { getProductById, PRODUCTS } from '@/data/products';
+import { PRODUCTS, Product } from '@/data/products';
 import { useCartStore } from '@/store/cart-store';
+import { sanityFetch } from '@/lib/sanity';
 
 export default function ProductDetailPage() {
     const params = useParams();
     const id = params.id as string;
-    const product = getProductById(id);
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
     const { addItem } = useCartStore();
 
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const [activeImage, setActiveImage] = useState(0);
     const [isAdded, setIsAdded] = useState(false);
+
+    useEffect(() => {
+        async function fetchProduct() {
+            const query = `*[_type == "product" && (id == $id || _id == $id)][0] {
+                "id": coalesce(id, _id),
+                name,
+                subtitle,
+                price,
+                "image": image.asset->url,
+                "gallery": gallery[].asset->url,
+                category,
+                description,
+                specs,
+                sizes
+            }`;
+            
+            try {
+                const data = await sanityFetch<Product | null>({ query, params: { id } });
+                if (data) {
+                    setProduct(data);
+                } else {
+                    // Fallback to static data if not found in Sanity yet
+                    const staticProduct = PRODUCTS.find(p => p.id === id);
+                    if (staticProduct) setProduct(staticProduct);
+                }
+            } catch (error) {
+                console.error("Error fetching product from Sanity:", error);
+                const staticProduct = PRODUCTS.find(p => p.id === id);
+                if (staticProduct) setProduct(staticProduct);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchProduct();
+    }, [id]);
+
+    if (loading) {
+        return (
+            <main className="min-h-screen bg-[#050505] flex items-center justify-center">
+                <div className="animate-pulse text-metal-silver/20 text-[10px] uppercase tracking-[1em]">Cargando...</div>
+            </main>
+        );
+    }
 
     if (!product) {
         return (

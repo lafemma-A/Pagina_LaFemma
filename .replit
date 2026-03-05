@@ -32,3 +32,9 @@ outputType = "webview"
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+NEXT_PUBLIC_SANITY_PROJECT_ID = "vr7c4rez"
+NEXT_PUBLIC_SANITY_DATASET = "production"
