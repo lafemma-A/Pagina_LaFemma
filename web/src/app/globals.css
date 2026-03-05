@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  /* LIGHT THEME VARIABLES */
+  --color-deep-black-var: #ffffff;
+  --color-cyber-black-var: #fcfcfc;
+  --color-cyber-gray-var: #eaeaea;
+  --color-metal-silver-var: #111111;
+  --color-off-black-var: #f0f0f0;
+  
+  --background: var(--color-deep-black-var);
+  --foreground: var(--color-metal-silver-var);
+}
+
+.dark {
+  /* DARK THEME VARIABLES */
+  --color-deep-black-var: #0a0a0a;
+  --color-cyber-black-var: #050505;
+  --color-cyber-gray-var: #1a1a1a;
+  --color-metal-silver-var: #e0e0e0;
+  --color-off-black-var: #111111;
+  
+  --background: var(--color-deep-black-var);
+  --foreground: var(--color-metal-silver-var);
+}
+
+@theme {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Aliasing Tailwind utility classes to these dynamic variables */
+  --color-deep-black: var(--color-deep-black-var);
+  --color-cyber-black: var(--color-cyber-black-var);
+  --color-cyber-gray: var(--color-cyber-gray-var);
+  --color-metal-silver: var(--color-metal-silver-var);
+  --color-off-black: var(--color-off-black-var);
+
+  /* Constants */
+  --color-neon-purple: #b0fb5d;
+  --color-accent-lime: #ccff00;
+  --color-accent-purple: #7c3aed;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
