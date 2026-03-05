@@ -1,0 +1,38 @@
+"Hola, agente. Vas a trabajar en la finalización de LA FEMMA, una plataforma de e-commerce de ultra-lujo y minimalismo sensorial. El proyecto ya tiene una base sólida y optimizada. Tu objetivo es llevarlo a la meta final.
+
+1. Contexto Técnico:
+
+Framework: Next.js 15+ (App Router), React 19.
+Estética: Tailwind CSS v4 (Vanilla CSS), GSAP, Framer Motion y Three.js (React Three Fiber) para fondos dinámicos.
+Estado: Zustand para carrito e idiomas (ES/EN).
+Backend: Sanity CMS (Headless) para productos.
+Pagos: Stripe (integración inicial en /checkout).
+2. Estado Actual del Proyecto:
+
+✅ Performance: Optimizado para evitar lag entre WebGL y CSS del Modo Oscuro/Claro.
+✅ SEO/IA: Mapa del sitio, robots.txt, JSON-LD y archivo 
+
+llms.txt
+ configurados.
+✅ GitHub: Repositorio base en lafemma-A/Pagina_LaFemma.
+✅ Sanity: Esquemas de productos definidos en src/sanity/schemaTypes.
+3. Tus Próximas Tareas Prioritarias:
+
+Conexión Real de Datos: Actualmente los productos se cargan desde 
+
+src/data/products.ts
+. Debes migrar la lógica para que consuma los datos reales desde Sanity usando las funciones en 
+
+src/lib/sanity.ts
+.
+Checkout & Stripe: Validar que el flujo de pago en /checkout funcione perfectamente con las claves de producción de la dueña.
+Pulido Visual: Asegurar que las animaciones de GSAP se sientan fluidas y "caras" (estética Premium).
+Deploy: Configurar el despliegue final (Vercel recomendado) y conectar el dominio definitivo.
+Directriz de Marca: LA FEMMA NO es una tienda común. Es un mundo sensorial. Cada interacción debe ser suave, elegante y emocional. No uses colores genéricos ni componentes básicos.
+
+Por favor, analiza la estructura actual y dime por dónde quieres empezar."
+
+💡 Un último consejo para ti, Mafe:
+Cuando el nuevo agente empiece, lo primero que hará será pedirte las API Keys (de Sanity y de Stripe). Tenlas a mano para que él pueda conectar "el cerebro" de la tienda con la interfaz que ya dejamos lista.
+
+¡Ha sido un honor construir la base de LA FEMMA contigo! Si necesitas algo más en el futuro, aquí estaré. 🕊️✨
