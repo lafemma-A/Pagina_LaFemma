@@ -102,15 +102,17 @@ export default function ProductDetailPage() {
         PRODUCTS[(currentIndex + 3) % PRODUCTS.length],
     ];
 
+    const t = translations[lang];
+
     return (
-        <main className="min-h-screen bg-[#050505] relative pt-28">
+        <main className="min-h-screen bg-background relative pt-28 text-foreground selection:bg-neon-purple selection:text-black">
             <FluidBackground />
 
             {/* Back to Archive */}
             <div className="relative z-10 max-w-[1400px] mx-auto px-6 mb-8">
-                <Link href="/archivo" className="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.5em] text-gray-500 hover:text-neon-purple transition-colors group">
+                <Link href="/archivo" className="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.5em] text-muted-foreground hover:text-neon-purple transition-colors group">
                     <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    El Archivo
+                    {t.nav.archive}
                 </Link>
             </div>
 
@@ -127,28 +129,28 @@ export default function ProductDetailPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6 }}
-                        className="relative aspect-[3/4] overflow-hidden rounded-sm border border-white/5 bg-black group"
+                        className="relative aspect-[3/4] overflow-hidden rounded-sm border border-foreground/5 bg-background group"
                     >
                         <FadeImage
-                            src={product.gallery[activeImage]}
+                            src={product.gallery[activeImage] || product.image}
                             alt={product.name}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-1000"
                             priority
                         />
                         {/* Category Badge */}
-                        <div className="absolute top-6 left-6 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-sm">
+                        <div className="absolute top-6 left-6 px-4 py-2 bg-background/60 backdrop-blur-md border border-foreground/10 rounded-sm">
                             <span className="text-[9px] uppercase tracking-[0.5em] text-neon-purple">{product.category}</span>
                         </div>
                     </motion.div>
 
                     {/* Thumbnail Strip */}
                     <div className="flex gap-3">
-                        {product.gallery.map((img, i) => (
+                        {(product.gallery.length > 0 ? product.gallery : [product.image]).map((img, i) => (
                             <button
                                 key={i}
                                 onClick={() => setActiveImage(i)}
-                                className={`relative aspect-square w-20 overflow-hidden rounded-sm border transition-all duration-500 ${activeImage === i ? 'border-neon-purple/60 ring-1 ring-neon-purple/20' : 'border-white/5 opacity-50 hover:opacity-100'}`}
+                                className={`relative aspect-square w-20 overflow-hidden rounded-sm border transition-all duration-500 ${activeImage === i ? 'border-neon-purple/60 ring-1 ring-neon-purple/20' : 'border-foreground/5 opacity-50 hover:opacity-100'}`}
                             >
                                 <FadeImage src={img} alt={`Vista ${i + 1}`} fill className="object-cover" />
                             </button>
@@ -160,23 +162,23 @@ export default function ProductDetailPage() {
                 <div className="lg:sticky lg:top-32 space-y-10 py-4">
                     {/* Subtitle + Name */}
                     <div className="space-y-4">
-                        <span className="text-[10px] uppercase tracking-[0.8em] text-gray-500">{product.subtitle}</span>
-                        <h1 className="text-5xl md:text-7xl font-serif text-metal-silver uppercase tracking-tighter leading-[0.85]">
+                        <span className="text-[10px] uppercase tracking-[0.8em] text-muted-foreground">{product.subtitle}</span>
+                        <h1 className="text-5xl md:text-7xl font-serif text-foreground uppercase tracking-tighter leading-[0.85]">
                             {product.name}
                         </h1>
                         <p className="text-2xl font-serif text-neon-purple tracking-wider mt-4">
-                            ${product.price} <span className="text-xs text-gray-500 tracking-widest">USD</span>
+                            ${product.price} <span className="text-xs text-muted-foreground tracking-widest">USD</span>
                         </p>
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-400 font-light leading-relaxed text-base max-w-md">
+                    <p className="text-muted-foreground font-light leading-relaxed text-base max-w-md">
                         {product.description}
                     </p>
 
                     {/* Size Selector */}
                     <div className="space-y-4">
-                        <span className="text-[10px] uppercase tracking-[0.4em] text-metal-silver/40">Talla</span>
+                        <span className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground/40">Talla</span>
                         <div className="flex gap-3">
                             {product.sizes.map((size) => (
                                 <button
@@ -185,7 +187,7 @@ export default function ProductDetailPage() {
                                     className={`w-12 h-12 flex items-center justify-center border rounded-sm text-xs uppercase tracking-widest transition-all duration-300
                                         ${selectedSize === size
                                             ? 'border-neon-purple bg-neon-purple/10 text-neon-purple'
-                                            : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-white'
+                                            : 'border-foreground/10 text-muted-foreground hover:border-foreground/30 hover:text-foreground'
                                         }`}
                                 >
                                     {size}
@@ -201,44 +203,44 @@ export default function ProductDetailPage() {
                         className={`w-full py-5 flex items-center justify-center gap-4 border rounded-sm text-xs uppercase tracking-[0.4em] transition-all duration-700
                             ${isAdded
                                 ? 'bg-neon-purple text-black border-neon-purple'
-                                : 'border-white/20 text-metal-silver hover:bg-white hover:text-black hover:border-white'
+                                : 'border-foreground/20 text-foreground hover:bg-foreground hover:text-background hover:border-foreground'
                             }`}
                     >
                         <ShoppingBag className="w-4 h-4" />
-                        {isAdded ? 'Añadida al Carrito ✓' : 'Añadir al Carrito'}
+                        {isAdded ? (lang === 'ES' ? 'Añadida ✓' : 'Added ✓') : (lang === 'ES' ? 'Añadir al Carrito' : 'Add to Cart')}
                     </motion.button>
 
                     {/* ── Spec Sidebar ── */}
-                    <div className="border-t border-white/5 pt-10 space-y-8">
-                        <h3 className="text-[10px] uppercase tracking-[0.5em] text-metal-silver/40">Especificaciones Técnicas</h3>
+                    <div className="border-t border-foreground/5 pt-10 space-y-8">
+                        <h3 className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground/40">{lang === 'ES' ? 'Especificaciones' : 'Specifications'}</h3>
                         <div className="grid grid-cols-2 gap-8">
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-neon-purple/70">
                                     <Droplets className="w-3 h-3" />
                                     <span className="text-[9px] uppercase tracking-widest">Material</span>
                                 </div>
-                                <p className="text-xs text-gray-400 font-light">{product.specs.material}</p>
+                                <p className="text-xs text-muted-foreground font-light">{product.specs.material}</p>
                             </div>
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-neon-purple/70">
                                     <MapPin className="w-3 h-3" />
                                     <span className="text-[9px] uppercase tracking-widest">Origen</span>
                                 </div>
-                                <p className="text-xs text-gray-400 font-light">{product.specs.origin}</p>
+                                <p className="text-xs text-muted-foreground font-light">{product.specs.origin}</p>
                             </div>
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-neon-purple/70">
                                     <Ruler className="w-3 h-3" />
                                     <span className="text-[9px] uppercase tracking-widest">Densidad</span>
                                 </div>
-                                <p className="text-xs text-gray-400 font-light">{product.specs.density}</p>
+                                <p className="text-xs text-muted-foreground font-light">{product.specs.density}</p>
                             </div>
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2 text-neon-purple/70">
                                     <Sparkles className="w-3 h-3" />
                                     <span className="text-[9px] uppercase tracking-widest">Cuidado</span>
                                 </div>
-                                <p className="text-xs text-gray-400 font-light">{product.specs.care}</p>
+                                <p className="text-xs text-muted-foreground font-light">{product.specs.care}</p>
                             </div>
                         </div>
                     </div>
