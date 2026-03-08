@@ -20,12 +20,12 @@ export default function FadeImage({
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-        <div className={cn("relative overflow-hidden bg-cyber-gray/20", containerClassName)}>
+        <div className={cn("relative w-full h-full overflow-hidden bg-cyber-gray/20", containerClassName)}>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isLoaded ? 1 : 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="w-full h-full"
+                className="relative w-full h-full"
             >
                 <Image
                     src={src}

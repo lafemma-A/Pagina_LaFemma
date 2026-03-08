@@ -28,13 +28,10 @@ export default function Home() {
       <section className="relative z-10 min-h-[95vh] flex flex-col items-center justify-center px-6">
         {/* Brand Symbol */}
         <div className="relative w-32 h-32 mb-4 opacity-70">
-          <FadeImage
+          <img
             src="/assets/Logo_LAFEMMA.png"
             alt="LA FEMMA Symbol"
-            fill
-            className="object-contain"
-            priority
-            containerClassName="bg-transparent"
+            className="w-full h-full object-contain"
           />
         </div>
 

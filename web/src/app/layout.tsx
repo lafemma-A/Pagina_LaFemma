@@ -6,6 +6,7 @@ import Navbar from "@/components/shared/Navbar";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import PageTransition from "@/components/shared/PageTransition";
 import { ThemeProvider } from "@/components/theme-provider";
+import HydrationBoundary from "@/components/hydration-boundary";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -73,6 +74,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${outfit.variable} ${playfair.variable} antialiased bg-background text-foreground`}
       >
         <script
@@ -85,9 +87,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <CartSidebar />
-          <WhatsAppButton />
+          <HydrationBoundary>
+            <Navbar />
+            <CartSidebar />
+            <WhatsAppButton />
+          </HydrationBoundary>
           <PageTransition>
             {children}
           </PageTransition>

@@ -10,6 +10,8 @@ import FadeImage from '@/components/ui/FadeImage';
 import Footer from '@/components/shared/Footer';
 import { PRODUCTS, Product } from '@/data/products';
 import { useCartStore } from '@/store/cart-store';
+import { useLangStore } from '@/store/lang-store';
+import { translations } from '@/lib/translations';
 import { sanityFetch } from '@/lib/sanity';
 
 export default function ProductDetailPage() {
@@ -18,6 +20,7 @@ export default function ProductDetailPage() {
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const { addItem } = useCartStore();
+    const { lang } = useLangStore();
 
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const [activeImage, setActiveImage] = useState(0);
