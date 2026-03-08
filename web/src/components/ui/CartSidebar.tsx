@@ -2,12 +2,10 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '@/store/cart-store';
-import { ShoppingBag, X, Minus, Plus } from 'lucide-react';
-import Link from 'next/link';
-import FadeImage from './FadeImage';
+import { ShoppingBag, X } from 'lucide-react';
 
 export default function CartSidebar() {
-    const { isOpen, toggleCart, items, removeItem, addItem, getFormattedTotal } = useCartStore();
+    const { isOpen, toggleCart } = useCartStore();
 
     return (
         <AnimatePresence>
@@ -40,46 +38,34 @@ export default function CartSidebar() {
                             </button>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                            {items.length === 0 ? (
-                                <div className="h-full flex flex-col items-center justify-center text-center text-gray-500">
-                                    <p>Tu carrito está vacío.</p>
-                                    <p className="text-sm mt-2">Empieza a coleccionar memorias.</p>
+                        <div className="flex-1 overflow-y-auto p-6 space-y-6 flex flex-col items-center justify-center">
+                            <div className="space-y-4 text-center max-w-xs">
+                                <div>
+                                    <p className="text-metal-silver font-serif text-lg mb-3">Pronto los recuerdos estarán aquí</p>
+                                    <p className="text-sm text-gray-400 leading-relaxed">
+                                        Estamos preparando tu experiencia de compra. Mientras tanto, cuéntanos sobre el recuerdo que buscas.
+                                    </p>
                                 </div>
-                            ) : (
-                                items.map((item) => (
-                                    <div key={`${item._id}-${item.size}`} className="flex gap-4">
-                                        <div className="w-20 h-24 bg-neutral-800 rounded-sm relative overflow-hidden shrink-0 border border-white/5">
-                                            <FadeImage src={item.image || '/assets/Logo_LAFEMMA.png'} alt={item.name} fill className="object-cover" />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className="font-serif text-white">{item.name}</h3>
-                                            <p className="text-sm text-gray-400">{item.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
-                                            <div className="flex items-center gap-3 mt-3">
-                                                <button className="p-1 rounded-full border border-white/20 hover:bg-white/10" onClick={() => removeItem(item._id)}>
-                                                    <Minus className="w-3 h-3" />
-                                                </button>
-                                                <span className="text-sm">{item.quantity}</span>
-                                                <button className="p-1 rounded-full border border-white/20 hover:bg-white/10" onClick={() => addItem(item)}>
-                                                    <Plus className="w-3 h-3" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            )}
+                                
+                                <div className="pt-4 border-t border-white/10">
+                                    <p className="text-xs text-gray-500 mb-4">Haz clic en el botón de chat para hacer tu pedido por WhatsApp.</p>
+                                    <a
+                                        href="https://wa.me/573052529208"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={toggleCart}
+                                        className="block w-full"
+                                    >
+                                        <button className="w-full py-3 bg-neon-purple/20 border border-neon-purple/50 text-neon-purple font-bold uppercase tracking-[0.3em] hover:bg-neon-purple/30 transition-all text-sm rounded-sm">
+                                            Contactar por WhatsApp
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="p-6 border-t border-white/10 bg-black/20">
-                            <div className="flex justify-between items-center mb-4 text-metal-silver">
-                                <span>Subtotal</span>
-                                <span className="font-serif text-xl">{getFormattedTotal()}</span>
-                            </div>
-                            <Link href="/checkout" onClick={toggleCart} className="block w-full">
-                                <button className="w-full py-4 bg-neon-purple text-black font-bold uppercase tracking-[0.4em] hover:bg-white transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled={items.length === 0}>
-                                    Proceder al Pago
-                                </button>
-                            </Link>
+                            <p className="text-center text-gray-400 text-xs">Tu selección está guardada</p>
                         </div>
                     </motion.div>
                 </>

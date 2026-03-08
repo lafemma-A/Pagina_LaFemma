@@ -170,7 +170,7 @@ export default function ProductDetailPage() {
                             {product.name}
                         </h1>
                         <p className="text-2xl font-serif text-neon-purple tracking-wider mt-4">
-                            ${product.price} <span className="text-xs text-muted-foreground tracking-widest">USD</span>
+                            {product.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}
                         </p>
                     </div>
 

@@ -27,7 +27,14 @@ LA FEMMA is a ultra-luxury, sensory-driven e-commerce platform for exclusive han
 ### Environment Variables Configured
 - `NEXT_PUBLIC_SANITY_PROJECT_ID` = vr7c4rez
 - `NEXT_PUBLIC_SANITY_DATASET` = production
-- ⏳ `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Pending user input
+- ⏳ `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Pending (checkout not active in prototype)
+
+### Pricing & Commerce
+- ✅ **Precios en COP** - Todos los precios convertidos de USD a Pesos Colombianos
+- ✅ **Carrito Deshabilitado** - Prototipo en desarrollo, sin pagos aún
+- ✅ **Mensaje Amable** - "Pronto los recuerdos estarán aquí" + dirección a WhatsApp
+- ✅ **WhatsApp Integrado** - Link a chat directo: wa.me/573052529208
+- ✅ **CTA Clara** - Botón en carrito para contactar por WhatsApp
 
 ### File Structure
 ```
@@ -91,15 +98,17 @@ cd web && npm run dev -p 5000 -H 0.0.0.0
 ```
 
 ## Testing Checklist
-- [ ] Homepage loads with hero animation
-- [ ] Language toggle (ES ↔ EN) works
-- [ ] Dark/light mode toggle works
-- [ ] Archive page loads products
-- [ ] Product detail page works
-- [ ] Add to cart functionality works
-- [ ] Cart sidebar opens/closes
-- [ ] All navigation links work
-- [ ] Mobile responsive on small screens
+- [x] Homepage loads with hero animation
+- [x] Language toggle (ES ↔ EN) works
+- [x] Dark/light mode toggle works
+- [x] Archive page loads products
+- [x] Product detail page works with COP pricing
+- [x] Cart sidebar opens with message (no checkout)
+- [x] WhatsApp button integrated & linked
+- [x] All navigation links work
+- [x] Mobile responsive on small screens
+- [x] All references to Medellín removed
+- [x] Origin showing "Colombia" on all products
 
 ## Known Limitations
 - Three.js WebGL disabled in Replit sandbox (aesthetic still works with CSS/animations)
