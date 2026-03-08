@@ -16,7 +16,7 @@ export default function Footer() {
                         </div>
                         <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500 leading-relaxed font-light">
                             Vestir es recordar. <br />
-                            Hecho en Medellín, Colombia.
+                            Hecho en Colombia.
                         </p>
                     </div>
 

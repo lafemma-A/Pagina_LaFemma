@@ -80,7 +80,7 @@ export const productType = defineType({
             type: 'object',
             fields: [
                 { name: 'material', title: 'Material', type: 'string' },
-                { name: 'origin', title: 'Origen', type: 'string', initialValue: 'Medellín, Colombia' },
+                { name: 'origin', title: 'Origen', type: 'string', initialValue: 'Colombia' },
                 { name: 'density', title: 'Densidad / Caída', type: 'string' },
                 { name: 'care', title: 'Cuidados', type: 'string' },
             ],

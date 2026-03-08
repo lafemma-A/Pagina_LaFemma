@@ -114,7 +114,7 @@ export default function CheckoutPage() {
                                 </div>
                                 <div className="md:col-span-2 space-y-2">
                                     <label className="text-[9px] uppercase tracking-widest text-gray-600 block px-1">Dirección</label>
-                                    <input required type="text" placeholder="Calle de la Memoria 44, Medellín" className="w-full bg-white/5 border border-white/10 rounded-sm py-4 px-6 text-sm text-white placeholder:text-white/10 focus:border-neon-purple/50 focus:outline-none transition-all" />
+                                    <input required type="text" placeholder="Calle de la Memoria 44, Colombia" className="w-full bg-white/5 border border-white/10 rounded-sm py-4 px-6 text-sm text-white placeholder:text-white/10 focus:border-neon-purple/50 focus:outline-none transition-all" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-[9px] uppercase tracking-widest text-gray-600 block px-1">Ciudad</label>
