@@ -15,7 +15,7 @@ LA FEMMA is a ultra-luxury, sensory-driven e-commerce platform for exclusive han
 
 ### Core Features
 ✅ **Responsive Design** - Mobile-first, breakpoint optimized
-✅ **Navigation** - All links functional (Home, Archive, Craftsmanship, History)
+✅ **Navigation** - All links functional (Home, Archive, History)
 ✅ **Bilingual (ES/EN)** - Language switcher in navbar
 ✅ **Dark/Light Mode** - Theme toggle with persistent state
 ✅ **Product Archive** - Dynamic grid from Sanity CMS
@@ -45,7 +45,6 @@ web/
 │   │   ├── archivo/      # Product archive (dynamic grid)
 │   │   ├── productos/    # Product detail pages
 │   │   ├── historia/     # Brand story
-│   │   ├── artesania/    # Craftsmanship
 │   │   └── layout.tsx    # Root layout with theme/hydration
 │   ├── components/
 │   │   ├── shared/       # Navbar, Footer, PageTransition

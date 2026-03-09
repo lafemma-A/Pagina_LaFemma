@@ -11,7 +11,6 @@ import { translations } from '@/lib/translations';
 const NAV_LINKS_MAP = [
     { href: '/', key: 'home' },
     { href: '/archivo', key: 'archive' },
-    { href: '/artesania', key: 'craft' },
     { href: '/historia', key: 'history' },
 ];
 

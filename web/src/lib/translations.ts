@@ -3,7 +3,6 @@ export const translations = {
         nav: {
             home: 'Inicio',
             archive: 'El Archivo',
-            craft: 'Artesanía',
             history: 'Nuestra Historia',
             darkMode: 'Modo Oscuro',
             lightMode: 'Modo Claro'
@@ -31,7 +30,6 @@ export const translations = {
         nav: {
             home: 'Home',
             archive: 'The Archive',
-            craft: 'Craftsmanship',
             history: 'Our History',
             darkMode: 'Dark Mode',
             lightMode: 'Light Mode'
