@@ -1,0 +1,44 @@
+00:35:01.063 Running build in Washington, D.C., USA (East) – iad1
+00:35:01.063 Build machine configuration: 2 cores, 8 GB
+00:35:01.201 Cloning github.com/lafemma-A/Pagina_LaFemma (Branch: main, Commit: fdcdc7b)
+00:35:04.175 Cloning completed: 2.974s
+00:35:04.410 Restored build cache from previous deployment (HcxNQ8tjWviEg6TFsMR246o7UPyZ)
+00:35:05.040 Running "vercel build"
+00:35:05.679 Vercel CLI 50.28.0
+00:35:06.018 Installing dependencies...
+00:35:13.000 
+00:35:13.001 changed 1 package in 7s
+00:35:13.001 
+00:35:13.002 292 packages are looking for funding
+00:35:13.002   run `npm fund` for details
+00:35:13.037 Detected Next.js version: 16.1.6
+00:35:13.044 Running "npm run build"
+00:35:13.139 
+00:35:13.139 > web@0.1.0 build
+00:35:13.139 > next build
+00:35:13.139 
+00:35:14.113 ▲ Next.js 16.1.6 (Turbopack)
+00:35:14.114 
+00:35:14.121 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+00:35:14.145   Creating an optimized production build ...
+00:35:27.742 ✓ Compiled successfully in 13.1s
+00:35:27.744   Running TypeScript ...
+00:35:34.137   Collecting page data using 1 worker ...
+00:35:34.501   Generating static pages using 1 worker (0/9) ...
+00:35:34.730 Error occurred prerendering page "/archivo". Read more: https://nextjs.org/docs/messages/prerender-error
+00:35:34.734 Error: `projectId` can only contain only a-z, 0-9 and dashes
+00:35:34.735     at <unknown> (.next/server/chunks/ssr/[root-of-the-server]__268bcac5._.js:1:258805)
+00:35:34.735     at a6 (.next/server/chunks/ssr/[root-of-the-server]__268bcac5._.js:1:258869)
+00:35:34.735     at cv.config (.next/server/chunks/ssr/[root-of-the-server]__268bcac5._.js:12:29556)
+00:35:34.735     at new cv (.next/server/chunks/ssr/[root-of-the-server]__268bcac5._.js:12:28923)
+00:35:34.735     at createClient (.next/server/chunks/ssr/[root-of-the-server]__268bcac5._.js:12:33407)
+00:35:34.735     at module evaluation (.next/server/chunks/ssr/[root-of-the-server]__268bcac5._.js:12:40662)
+00:35:34.735     at instantiateModule (.next/server/chunks/ssr/[turbopack]_runtime.js:740:9)
+00:35:34.736     at getOrInstantiateModuleFromParent (.next/server/chunks/ssr/[turbopack]_runtime.js:763:12)
+00:35:34.736     at Context.esmImport [as i] (.next/server/chunks/ssr/[turbopack]_runtime.js:228:20)
+00:35:34.736     at module evaluation (.next/server/chunks/ssr/[root-of-the-server]__f62b118b._.js:1:9719) {
+00:35:34.736   digest: '1546095162'
+00:35:34.736 }
+00:35:34.736 Export encountered an error on /archivo/page: /archivo, exiting the build.
+00:35:34.755 ⨯ Next.js build worker exited with code: 1 and signal: null
+00:35:34.796 Error: Command "npm run build" exited with 1

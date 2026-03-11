@@ -1,9 +1,17 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "vr7c4rez";
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+
+// Validate projectId format for Sanity
+if (!/^[a-z0-9-]+$/.test(projectId)) {
+    console.warn(`⚠️ Invalid Sanity projectId: "${projectId}". Using fallback data.`);
+}
+
 export const client = createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "your_project_id", // Fallback for dev
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+    projectId,
+    dataset,
     apiVersion: "2024-01-01",
     useCdn: true,
 });
