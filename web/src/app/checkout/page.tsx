@@ -172,7 +172,7 @@ export default function CheckoutPage() {
                             type="submit"
                             className="w-full py-5 bg-neon-purple text-black text-[10px] uppercase font-bold tracking-[0.5em] hover:bg-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                         >
-                            {isProcessing ? 'Procesando Transacción...' : `Pagar Ahora — $${grandTotal.toLocaleString()} USD`}
+                            {isProcessing ? 'Procesando Transacción...' : 'Completar Pedido'}
                         </button>
 
                         <p className="flex items-center justify-center gap-2 text-[8px] text-gray-600 uppercase tracking-widest">
@@ -194,12 +194,9 @@ export default function CheckoutPage() {
                                     </div>
                                     <div className="flex-grow space-y-1">
                                         <h4 className="text-sm font-serif text-metal-silver uppercase">{item.name}</h4>
-                                        <div className="flex justify-between items-end">
-                                            <p className="text-[10px] text-gray-600 uppercase tracking-widest">
-                                                Talla: {item.size || 'Unica'} · Cant. {item.quantity}
-                                            </p>
-                                            <p className="text-xs text-neon-purple">${(item.price * item.quantity).toLocaleString()}</p>
-                                        </div>
+                                        <p className="text-[10px] text-gray-600 uppercase tracking-widest">
+                                            Talla: {item.size || 'Única'} · Cant. {item.quantity}
+                                        </p>
                                     </div>
                                 </div>
                             ))}
@@ -207,20 +204,12 @@ export default function CheckoutPage() {
 
                         <div className="pt-10 border-t border-white/5 space-y-4">
                             <div className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500">
-                                <span>Subtotal</span>
-                                <span>${total.toLocaleString()} USD</span>
-                            </div>
-                            <div className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500">
                                 <span>Envío Express</span>
-                                <span className="text-neon-purple">Cortesia</span>
-                            </div>
-                            <div className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500">
-                                <span>Impuestos (Simulado)</span>
-                                <span>$0.00 USD</span>
+                                <span className="text-neon-purple">Cortesía</span>
                             </div>
                             <div className="pt-6 flex justify-between items-end">
-                                <span className="text-xs uppercase tracking-[0.4em] text-metal-silver">Total</span>
-                                <span className="text-3xl font-serif text-neon-purple">${grandTotal.toLocaleString()} <span className="text-[10px] text-gray-500 uppercase tracking-widest ml-1">USD</span></span>
+                                <span className="text-xs uppercase tracking-[0.4em] text-metal-silver">Pedido</span>
+                                <span className="text-lg font-serif text-neon-purple tracking-widest">A coordinar</span>
                             </div>
                         </div>
 

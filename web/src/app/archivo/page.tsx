@@ -18,6 +18,7 @@ export default function ArchivoPage() {
     const { addItem } = useCartStore();
     const { lang } = useLangStore();
     const t = translations[lang].archivePreview;
+    // Show static products immediately, update from Sanity if available
     const [products, setProducts] = useState<Product[]>(PRODUCTS);
 
     useEffect(() => {
@@ -101,7 +102,6 @@ export default function ArchivoPage() {
                                         <div className="flex justify-between items-end">
                                             <div>
                                                 <h3 className="text-xl font-serif text-foreground uppercase mb-1">{item.subtitle}: {item.name}</h3>
-                                                <p className="text-xs text-muted-foreground tracking-wider">${item.price} USD</p>
                                             </div>
                                             <button
                                                 onClick={(e) => {

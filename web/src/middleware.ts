@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https://cdn.sanity.io https://images.unsplash.com;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://api.sanity.io https://apicdn.sanity.io https://api.stripe.com;
+    connect-src 'self' https://api.sanity.io https://*.api.sanity.io https://apicdn.sanity.io https://*.apicdn.sanity.io https://api.stripe.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';

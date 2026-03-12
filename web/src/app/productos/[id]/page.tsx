@@ -17,8 +17,11 @@ import { sanityFetch } from '@/lib/sanity';
 export default function ProductDetailPage() {
     const params = useParams();
     const id = params.id as string;
-    const [product, setProduct] = useState<Product | null>(null);
-    const [loading, setLoading] = useState(true);
+
+    // Load static data immediately — no loading state needed
+    const staticProduct = PRODUCTS.find(p => p.id === id) || null;
+    const [product, setProduct] = useState<Product | null>(staticProduct);
+    const [loading, setLoading] = useState(false);
     const { addItem } = useCartStore();
     const { lang } = useLangStore();
 
@@ -40,22 +43,11 @@ export default function ProductDetailPage() {
                 specs,
                 sizes
             }`;
-            
             try {
                 const data = await sanityFetch<Product | null>({ query, params: { id } });
-                if (data) {
-                    setProduct(data);
-                } else {
-                    // Fallback to static data if not found in Sanity yet
-                    const staticProduct = PRODUCTS.find(p => p.id === id);
-                    if (staticProduct) setProduct(staticProduct);
-                }
-            } catch (error) {
-                console.error("Error fetching product from Sanity:", error);
-                const staticProduct = PRODUCTS.find(p => p.id === id);
-                if (staticProduct) setProduct(staticProduct);
-            } finally {
-                setLoading(false);
+                if (data) setProduct(data);
+            } catch {
+                // Keep static fallback already shown
             }
         }
         fetchProduct();
@@ -169,9 +161,6 @@ export default function ProductDetailPage() {
                         <h1 className="text-5xl md:text-7xl font-serif text-foreground uppercase tracking-tighter leading-[0.85]">
                             {product.name}
                         </h1>
-                        <p className="text-2xl font-serif text-neon-purple tracking-wider mt-4">
-                            {product.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}
-                        </p>
                     </div>
 
                     {/* Description */}
@@ -290,7 +279,6 @@ export default function ProductDetailPage() {
                                 <div className="absolute bottom-6 left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                                     <span className="text-[9px] uppercase tracking-widest text-neon-purple block mb-1">{item.category}</span>
                                     <h3 className="text-lg font-serif text-metal-silver uppercase">{item.subtitle}: {item.name}</h3>
-                                    <p className="text-xs text-gray-500 mt-1">${item.price} USD</p>
                                 </div>
                             </div>
                         </Link>
